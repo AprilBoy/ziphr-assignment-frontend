@@ -1,0 +1,41 @@
+<!-- Header -->
+<div class="page-header">
+    <!-- Title -->
+    <div class="fw-bold">What do you need to be done?</div>
+</div>
+  <!-- Create new Task -->
+<div class="container-fluid">
+    <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+      <div class="row mb-3 g-2">
+          <div class="col-m-6 col-sm-12">
+            <div class="form-floating">
+              <input formControlName="title" type="text" class="form-control"  id="floatingInputGrid" placeholder="make smth awesome...">
+              <label for="floatingInputGrid">Task</label>
+            </div>
+          </div>
+          <div class="col-m-3 col-sm-6">
+            <div class="form-floating">
+              <input formControlName="date" type="date" [min]="today | date: 'yyyy-MM-dd'" class="form-control" id="floatingDateGrid">
+              <label for="floatingDateGrid">Date</label>
+            </div>
+          </div>
+          <div class="col-m-3 col-sm-6">
+            <div class="form-floating">
+              <select formControlName="priority" class="form-select" id="floatingSelectGrid" aria-label="Priority">
+                <ng-container *ngFor="let item of getPriorityList(); let i = index ">
+                  <option [value]="i">{{item}}</option>
+                </ng-container>
+              </select>
+              <label for="floatingSelectGrid">Priority</label>
+            </div>
+          </div>
+      </div>
+      <div class="row justify-content-end">
+          <div class="d-flex justify-content-end col col-m-3">
+              <button  [disabled]="todoForm.invalid" type="submit" class="btn btn-primary" title="Create new task">
+                  Add task
+              </button>
+          </div>
+      </div>
+    </form>
+</div>

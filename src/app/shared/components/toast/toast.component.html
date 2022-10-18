@@ -1,0 +1,10 @@
+<div
+  #toastElement
+  class="toast fade d-flex justify-content-between align-items-center toast-width p-3 mt-2 {{type}}"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+>
+  <div class="toast-body p-0">{{ message }}</div>
+  <button type="button" class="btn-close" aria-label="Close" (click)="hide()"></button>
+</div>
