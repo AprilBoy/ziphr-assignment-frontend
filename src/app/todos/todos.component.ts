@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AppService } from '../app.service';
+import { EventTypes } from '../shared/enums/event-types';
 import { Todo } from '../shared/interfaces/todo';
+import { ToastService } from '../shared/services/toast.service';
 
 @Component({
   selector: 'app-todos',
@@ -16,7 +18,9 @@ export class TodosComponent implements OnInit, OnDestroy {
   /** List of todos. */
   todos: Todo[] = [];
 
-  constructor(private appService: AppService) {
+  constructor(
+    private appService: AppService, 
+    private toastService: ToastService) {
     console.debug('TodosComponent initiated.');
   }
 
@@ -39,5 +43,6 @@ export class TodosComponent implements OnInit, OnDestroy {
 
   clean(): void {
     this.appService.todos.next(this.todos.filter((todo: Todo): boolean => !todo.done));
+    this.toastService.showToast(EventTypes.Success, 'Completed tasks was removed')
   }
 }
