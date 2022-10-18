@@ -1,0 +1,22 @@
+@import "src/variables";
+
+.toast {
+    border-left-width: 20px;
+
+    &.success {
+        border-left-color: $success;
+    }
+    
+    &.primary {
+        border-left-color: $primary;
+    }
+    
+    &.warning {
+        border-left-color: $warning;
+    }
+    
+    &.danger {
+        border-left-color: $danger;
+    }
+}
+

@@ -28,7 +28,7 @@ npm run lint
 - [x] Click to mark a todo as done.
 - [x] Clean up todos that are done.
 - [x] Use `localStorage` to store data.
-- [ ] Todo creation page.
+- [X] Todo creation page.
 
 ## Pages
 
