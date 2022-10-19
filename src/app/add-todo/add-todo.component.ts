@@ -55,10 +55,11 @@ export class AddTodoComponent implements OnInit, OnDestroy{
   private prepareData(): Todo[]{
     const {title, priority, date} = this.todoForm.getRawValue();
     const formattedDate = new Date(date).getTime();
+    const FormattedPriority = Number(priority);
     const newTodo = {
         title,
         date: formattedDate,
-        priority: Number(priority),
+        priority: FormattedPriority,
         done: false,
       }
     return [

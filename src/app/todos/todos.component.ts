@@ -42,7 +42,10 @@ export class TodosComponent implements OnInit, OnDestroy {
   }
 
   clean(): void {
-    this.appService.todos.next(this.todos.filter((todo: Todo): boolean => !todo.done));
-    this.toastService.showToast(EventTypes.Success, 'Completed tasks was removed')
+    const completedTasks = this.todos.filter((todo: Todo): boolean => todo.done);
+    if(completedTasks.length) {
+      this.appService.todos.next(this.todos.filter((todo: Todo): boolean => !todo.done));
+      this.toastService.showToast(EventTypes.Success, 'Completed tasks was removed')
+    }
   }
 }
